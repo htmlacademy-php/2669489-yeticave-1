@@ -1,62 +1,9 @@
 <?php
 $is_auth = rand(0, 1);
 
-$user_name = 'Андрей Скрынник'; // укажите здесь ваше имя
-
-
-$categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
-
-$lots = [
-    [
-        'name'      => '2014 Rossignol District Snowboard',
-        'category'  => 'Доски и лыжи',
-        'price'     => 10999,
-        'image_url' => 'img/lot-1.jpg',
-    ],
-    [
-        'name'      => 'DC Ply Mens 2016/2017 Snowboard',
-        'category'  => 'Доски и лыжи',
-        'price'     => 159999,
-        'image_url' => 'img/lot-2.jpg',
-    ],
-    [
-        'name'      => 'Крепления Union Contact Pro 2015 года размер L/XL',
-        'category'  => 'Крепления',
-        'price'     => 8000,
-        'image_url' => 'img/lot-3.jpg',
-    ],
-    [
-        'name'      => 'Ботинки для сноуборда DC Mutiny Charocal',
-        'category'  => 'Ботинки',
-        'price'     => 10999,
-        'image_url' => 'img/lot-4.jpg',
-    ],
-    [
-        'name'      => 'Куртка для сноуборда DC Mutiny Charocal',
-        'category'  => 'Одежда',
-        'price'     => 7500,
-        'image_url' => 'img/lot-5.jpg',
-    ],
-    [
-        'name'      => 'Маска Oakley Canopy',
-        'category'  => 'Разное',
-        'price'     => 5400,
-        'image_url' => 'img/lot-6.jpg',
-    ],
-];
-
-function formatThePrice ($num) // объявление функции форматирования цены
-{
-    $rounded_num = ceil($num); // округление цены до целого числа
-
-    if ($rounded_num < 1000) {  // условие для цены < 1000
-        return "{$rounded_num}  ₽";    // возврат цены при условии < 1000, добавление знака валюты
-    }
-
-    return number_format($rounded_num, 0, '', ' ') . ' ₽'; // возврат цены при >= 1000, параметры number, decimals, decimalpoint, separator
-}
-
+$user_name = 'Андрей'; // укажите здесь ваше имя
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -90,7 +37,7 @@ function formatThePrice ($num) // объявление функции форма
         ?>
             <div class="user-menu__logged">
             <p>
-            <?php echo $user_name;?>
+            <?php echo htmlspecialchars($user_name) ?>
             </p>
             <a class="user-menu__bets" href="pages/my-bets.html">Мои ставки</a>
             <a class="user-menu__logout" href="#">Выход</a>

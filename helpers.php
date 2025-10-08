@@ -13,6 +13,19 @@
  *
  * @return bool true при совпадении с форматом 'ГГГГ-ММ-ДД', иначе false
  */
+function formatThePrice ($num) // объявление функции форматирования цены
+{
+    $rounded_num = ceil($num); // округление цены до целого числа
+
+    if ($rounded_num < 1000) {  // условие для цены < 1000
+        return "{$rounded_num}  ₽";    // возврат цены при условии < 1000, добавление знака валюты
+    }
+
+    return number_format($rounded_num, 0, '', ' ') . ' ₽'; // возврат цены при >= 1000, параметры number, decimals, decimalpoint, separator
+}
+//из лэйаут пиэйчпи перед доктайп
+
+
 function is_date_valid(string $date) : bool {
     $format_to_check = 'Y-m-d';
     $dateTimeObj = date_create_from_format($format_to_check, $date);
