@@ -53,8 +53,14 @@
 
                             <span class="lot__cost"><?php echo formatThePrice($lot['price'])?></span>
                         </div>
-                        <div class="lot__timer timer">
-                            12:23
+                        <!--<div class="lot__timer timer">
+                            
+                            12:00-- вызов функции отсчёта обратного времени-->
+                        <?php $time = getTimeSpan($lot['endDate']); ?>
+                        <div class="lot__timer timer
+                        <?php if ($time[0] < 1): ?> timer--finishing<?php endif; ?>">
+                            <?php echo str_pad($time[0], 2, '0', STR_PAD_LEFT) . ' ч. : ' . str_pad($time[1], 2, '0', STR_PAD_LEFT) . ' мин.'?>
+
                         </div>
                     </div>
                 </div>
