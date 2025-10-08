@@ -58,3 +58,4 @@ $pageLayout = include_template('layout.php', [
 ]);
 
 print $pageLayout;
+?>
