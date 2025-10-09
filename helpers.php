@@ -13,6 +13,23 @@
  *
  * @return bool true при совпадении с форматом 'ГГГГ-ММ-ДД', иначе false
  */
+
+// объявление функции рассчёта обратного времени
+
+function getTimeSpan($date)
+{
+    $currentDate = time();
+    $expirationDate = strtotime($date);
+    $remainTime = $expirationDate - $currentDate;
+    if ($remainTime <= 0) {
+        return [0, 0];
+    }
+    $hours = floor($remainTime / 3600);
+    $minutes = floor(($remainTime % 3600) / 60);
+    $time = [$hours, $minutes];
+    return $time;
+}
+
 function formatThePrice ($num) // объявление функции форматирования цены
 {
     $rounded_num = ceil($num); // округление цены до целого числа
